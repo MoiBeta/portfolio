@@ -1,16 +1,18 @@
-import Image from "next/image";
+import { AboutSection } from "@/components/about/about-section";
+import { ContactSection } from "@/components/contact/contact-section";
+import { Footer } from "@/components/footer/footer";
+import { HeroSection } from "@/components/hero/hero-section";
+import { Navbar } from "@/components/navbar/navbar";
+import { ProjectsSection } from "@/components/projects/project-section";
 export default function Home() {
   return (
-    <main className="min-h-screen bg-black text-white flex items-center justify-center">
-      <div className="text-center">
-        <h1 className="text-6xl font-bold">
-          Moisés Betancourt
-        </h1>
-
-        <p className="text-zinc-400 mt-4 text-xl">
-          Flutter & Full Stack Developer
-        </p>
-      </div>
+    <main className="min-h-screen bg-black text-white">
+      <Navbar />
+      <HeroSection />
+      <ProjectsSection />
+      <AboutSection />
+      <ContactSection />
+      <Footer />
     </main>
   );
 }
