@@ -20,6 +20,20 @@ export function Navbar() {
 
     const [open, setOpen] = useState(false);
 
+    const handleNavigation = (
+        sectionId: string
+    ) => {
+        setOpen(false);
+
+        setTimeout(() => {
+            document
+                .getElementById(sectionId)
+                ?.scrollIntoView({
+                    behavior: "smooth",
+                });
+        }, 400);
+    };
+
     return (
         <header className="border-b border-zinc-800 sticky top-0 z-50 bg-black/80 backdrop-blur">
             <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
@@ -69,23 +83,20 @@ export function Navbar() {
 
                             <div className="flex flex-col items-center gap-6 mt-10 text-lg">
                                 <a
-                                    href="#projects"
                                     className="text-zinc-300 hover:text-white transition-colors"
-                                    onClick={() => setOpen(false)}>
+                                    onClick={() => handleNavigation("projects")}>
                                     Projects
                                 </a>
 
                                 <a
-                                    href="#about"
                                     className="text-zinc-300 hover:text-white transition-colors"
-                                    onClick={() => setOpen(false)}>
+                                    onClick={() => handleNavigation("about")}>
                                     About
                                 </a>
 
                                 <a
-                                    href="#contact"
                                     className="text-zinc-300 hover:text-white transition-colors"
-                                    onClick={() => setOpen(false)}>
+                                    onClick={() => handleNavigation("contact")}>
                                     Contact
                                 </a>
                             </div>
