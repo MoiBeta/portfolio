@@ -17,6 +17,7 @@ export function ProjectCard({
 }: ProjectCardProps) {
   const {
     title,
+    kind,
     description,
     challenge,
     technologies,
@@ -38,7 +39,11 @@ export function ProjectCard({
       )}
 
       <CardContent className="p-6">
-        <h3 className="text-2xl font-semibold">
+        <p className="text-sm text-zinc-500">
+          {kind}
+        </p>
+
+        <h3 className="mt-1 text-2xl font-semibold">
           {title}
         </h3>
 
@@ -68,7 +73,7 @@ export function ProjectCard({
             {demoUrl && (
               <Button asChild>
                 <a href={demoUrl} target="_blank" rel="noopener noreferrer">
-                  Live Demo
+                  {kind === "Freelance" ? "Visit site" : "Live Demo"}
                 </a>
               </Button>
             )}
