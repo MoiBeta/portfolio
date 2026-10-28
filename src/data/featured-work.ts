@@ -12,6 +12,8 @@ export type CaseStudy = {
   images?: { src: string; alt: string }[];
   // TODO: Play Store / App Store links if still published
   links?: { label: string; href: string }[];
+  // Rendered instead of screenshots when the product is no longer public
+  diagram?: "plass";
 };
 
 export const featuredWork: CaseStudy[] = [
@@ -33,6 +35,22 @@ export const featuredWork: CaseStudy[] = [
     outcome:
       "The new ordering flow shipped as part of the production app while existing flows kept working.",
     tags: ["Flutter", "BLoC", "AWS", "Microservices", "Spring Boot"],
+    images: [
+      {
+        src: "/work/juan-valdez-order-summary.webp",
+        alt: "Order summary screen in the Juan Valdez Colombia app",
+      },
+    ],
+    links: [
+      {
+        label: "App Store",
+        href: "https://apps.apple.com/co/app/juan-valdez-colombia/id1459707374",
+      },
+      {
+        label: "Google Play",
+        href: "https://play.google.com/store/apps/details?id=com.paymentez.jv_amigos",
+      },
+    ],
   },
   {
     id: "plass",
@@ -48,8 +66,10 @@ export const featuredWork: CaseStudy[] = [
       "Built v1 with GetX, MVC and Firebase, then contributed to the migration to a dedicated backend with Riverpod, Dio, Clean Architecture and Pusher WebSockets.",
       "Managed Google Play and App Store releases for both apps.",
     ],
-    outcome: "Both apps reached real users on Android and iOS.",
+    outcome:
+      "Both apps reached real users on Android and iOS. The service has since been discontinued.",
     tags: ["Flutter", "Riverpod", "Clean Architecture", "Firebase", "Pusher"],
+    diagram: "plass",
   },
   {
     id: "magneto",
@@ -69,5 +89,21 @@ export const featuredWork: CaseStudy[] = [
     outcome:
       "Core candidate screens were rebuilt on reusable components and shipped to production.",
     tags: ["Flutter", "GetX", "REST APIs", "Figma"],
+    images: [
+      {
+        src: "/work/magneto-cv-builder.webp",
+        alt: "CV builder profile screen in the Magneto job app",
+      },
+    ],
+    links: [
+      {
+        label: "App Store",
+        href: "https://apps.apple.com/co/app/magneto-ofertas-de-empleo/id6444812096",
+      },
+      {
+        label: "Google Play",
+        href: "https://play.google.com/store/apps/details?id=com.magneto365.app",
+      },
+    ],
   },
 ];
