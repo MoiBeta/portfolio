@@ -16,6 +16,16 @@ import {
     SheetTrigger,
 } from "@/components/ui/sheet";
 
+import { site } from "@/data/site";
+
+const navItems = [
+    { id: "work", label: "Work" },
+    { id: "experience", label: "Experience" },
+    { id: "projects", label: "Projects" },
+    { id: "about", label: "About" },
+    { id: "contact", label: "Contact" },
+];
+
 export function Navbar() {
 
     const [open, setOpen] = useState(false);
@@ -41,22 +51,20 @@ export function Navbar() {
                     href="/"
                     className="font-bold text-lg"
                 >
-                    MoiBeta
+                    {site.shortName}
                 </Link>
 
 
                 <nav className="hidden md:flex items-center gap-6 text-sm text-zinc-400">
-                    <a href="#projects">
-                        Projects
-                    </a>
-
-                    <a href="#about">
-                        About
-                    </a>
-
-                    <a href="#contact">
-                        Contact
-                    </a>
+                    {navItems.map((item) => (
+                        <a
+                            key={item.id}
+                            href={`#${item.id}`}
+                            className="hover:text-white transition-colors"
+                        >
+                            {item.label}
+                        </a>
+                    ))}
                 </nav>
 
                 <div className="md:hidden">
@@ -65,6 +73,7 @@ export function Navbar() {
                             <Button
                                 variant="ghost"
                                 size="icon"
+                                aria-label="Open navigation menu"
                             >
                                 <Menu className="w-6 h-6" />
                             </Button>
@@ -82,23 +91,18 @@ export function Navbar() {
                             </div>
 
                             <div className="flex flex-col items-center gap-6 mt-10 text-lg">
-                                <a
-                                    className="text-zinc-300 hover:text-white transition-colors"
-                                    onClick={() => handleNavigation("projects")}>
-                                    Projects
-                                </a>
-
-                                <a
-                                    className="text-zinc-300 hover:text-white transition-colors"
-                                    onClick={() => handleNavigation("about")}>
-                                    About
-                                </a>
-
-                                <a
-                                    className="text-zinc-300 hover:text-white transition-colors"
-                                    onClick={() => handleNavigation("contact")}>
-                                    Contact
-                                </a>
+                                {navItems.map((item) => (
+                                    <a
+                                        key={item.id}
+                                        href={`#${item.id}`}
+                                        className="text-zinc-300 hover:text-white transition-colors"
+                                        onClick={(event) => {
+                                            event.preventDefault();
+                                            handleNavigation(item.id);
+                                        }}>
+                                        {item.label}
+                                    </a>
+                                ))}
                             </div>
                         </SheetContent>
                     </Sheet>
