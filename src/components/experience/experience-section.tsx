@@ -32,6 +32,12 @@ export function ExperienceSection() {
                 </span>
               </h3>
 
+              {item.client && (
+                <p className="mt-1 text-sm text-zinc-500">
+                  Client: {item.client}
+                </p>
+              )}
+
               <p className="mt-3 text-zinc-400 leading-relaxed">
                 {item.summary}
               </p>

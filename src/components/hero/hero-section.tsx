@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import { Download, MapPin } from "lucide-react";
+import { Download, Mail, MapPin } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -16,7 +16,7 @@ const initials = site.name
 
 export function HeroSection() {
   return (
-    <section className="px-6 py-24 md:py-32">
+    <section className="px-6 pt-10 pb-4 md:py-32">
       <div className="max-w-6xl mx-auto">
         <div className="flex items-center gap-4">
           {site.photoUrl ? (
@@ -45,23 +45,27 @@ export function HeroSection() {
           </div>
         </div>
 
-        <p className="mt-10 text-5xl md:text-7xl font-bold tracking-tight max-w-4xl">
+        <p className="mt-8 md:mt-10 text-4xl md:text-7xl font-bold tracking-tight max-w-4xl">
           {site.tagline}
         </p>
 
-        <p className="mt-8 text-zinc-400 text-xl max-w-2xl leading-relaxed">
+        <p className="mt-6 md:mt-8 text-zinc-400 text-lg md:text-xl max-w-2xl leading-relaxed">
           {site.summary}
         </p>
 
         <p className="mt-4 flex items-center gap-2 text-zinc-500">
-          <MapPin className="size-4" />
+          <MapPin className="size-4 shrink-0" />
           {site.location}
         </p>
 
-        <div className="mt-10 flex flex-wrap items-center gap-4">
+        <div className="mt-8 md:mt-10 flex flex-wrap items-center gap-4">
           {site.cvUrl && (
             <Button size="lg" asChild>
-              <a href={site.cvUrl} download>
+              <a
+                href={site.cvUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <Download />
                 Download CV
               </a>
@@ -75,6 +79,14 @@ export function HeroSection() {
           >
             <a href="#contact">Contact</a>
           </Button>
+
+          <a
+            href={`mailto:${site.email}`}
+            className="inline-flex items-center gap-2 text-sm text-zinc-400 hover:text-white transition-colors"
+          >
+            <Mail className="size-4" />
+            {site.email}
+          </a>
 
           <Button variant="ghost" size="icon-lg" asChild>
             <a

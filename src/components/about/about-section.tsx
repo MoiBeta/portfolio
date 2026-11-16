@@ -35,8 +35,11 @@ export function AboutSection() {
 
           <p className="mt-6 text-zinc-400 text-lg leading-relaxed">
             Currently studying Computer Engineering at
-            UNIR. Open to remote and hybrid
-            opportunities.
+            UNIR. I use AI tools like Claude Code and
+            coding agents every day to explore
+            codebases, refactor and write tests faster,
+            while design decisions and code review stay
+            in my hands.
           </p>
 
           <Separator className="my-10 bg-zinc-800" />

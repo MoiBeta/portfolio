@@ -7,7 +7,7 @@ export function FeaturedWorkSection() {
   return (
     <section
       id="work"
-      className="scroll-mt-20 px-6 py-24"
+      className="scroll-mt-20 px-6 pt-8 pb-24 md:py-24"
     >
       <div className="max-w-6xl mx-auto">
         <SectionHeader

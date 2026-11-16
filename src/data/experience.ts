@@ -1,6 +1,7 @@
 export type Experience = {
   role: string;
   company: string;
+  client?: string;
   start: string;
   end: string;
   summary: string;
@@ -11,12 +12,12 @@ export type Experience = {
 export const experience: Experience[] = [
   {
     role: "Full Stack Developer",
-    // TODO: confirm company naming (LinkedIn shows "PageGroup")
-    company: "Michael Page / DXC",
+    company: "DXC (via Michael Page)",
+    client: "Juan Valdez",
     start: "Dec 2025",
     end: "Present",
     summary:
-      "Full stack work on the Juan Valdez mobile app: shipped an end-to-end ordering module and trace production issues from Flutter down to AWS.",
+      "Full stack work on the Juan Valdez mobile app: shipped an end-to-end ordering module and traced production issues from Flutter down to AWS.",
     tags: ["Flutter", "BLoC", "AWS", "Microservices", "Spring Boot"],
     caseStudyId: "juan-valdez",
   },

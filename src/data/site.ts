@@ -10,7 +10,6 @@ export type SiteConfig = {
   githubUrl: string;
   linkedinUrl: string;
   repoUrl: string;
-  // TODO: add the CV PDF to /public and set e.g. "/cv-moises-betancourt.pdf"
   cvUrl?: string;
   // TODO: add a profile photo to /public and set e.g. "/profile.jpg"
   photoUrl?: string;
@@ -24,11 +23,13 @@ export const site: SiteConfig = {
     "I build and ship mobile and web apps to production, from the UI down to the backend and the cloud.",
   summary:
     "4+ years delivering Android, iOS and Web apps across mobility, recruitment and e-commerce.",
-  location: "Bogotá, Colombia · Open to remote & hybrid",
+  location: "Bogotá, Colombia · Open to remote roles · US time zone overlap (UTC-5)",
   email: "betancourtmoises@gmail.com",
   url: "https://moibeta.dev",
   githubUrl: "https://github.com/MoiBeta",
   linkedinUrl:
     "https://www.linkedin.com/in/mois%C3%A9s-betancourt-41223013a/",
   repoUrl: "https://github.com/MoiBeta/portfolio",
+  cvUrl:
+    "https://drive.google.com/file/d/1lW71PCn2ettlK9p-WaOons6o-On5eUDk/view?usp=sharing",
 };

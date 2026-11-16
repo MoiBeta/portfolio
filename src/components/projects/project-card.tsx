@@ -1,5 +1,7 @@
 import Image from "next/image";
 
+import { ArrowRight } from "lucide-react";
+
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -21,6 +23,7 @@ export function ProjectCard({
     description,
     challenge,
     technologies,
+    flow,
     image,
     demoUrl,
     repoUrl,
@@ -54,10 +57,28 @@ export function ProjectCard({
         {challenge && (
           <p className="mt-4 text-zinc-400 leading-relaxed">
             <span className="text-zinc-300 font-medium">
-              Challenge:{" "}
+              What I did:{" "}
             </span>
             {challenge}
           </p>
+        )}
+
+        {flow && (
+          <ol
+            aria-label="Architecture"
+            className="mt-6 flex flex-wrap items-center gap-2 text-sm"
+          >
+            {flow.map((step, index) => (
+              <li key={step} className="flex items-center gap-2">
+                {index > 0 && (
+                  <ArrowRight className="size-4 text-zinc-600" />
+                )}
+                <span className="rounded-md border border-zinc-800 bg-zinc-900 px-3 py-1.5 text-zinc-300">
+                  {step}
+                </span>
+              </li>
+            ))}
+          </ol>
         )}
 
         <div className="flex flex-wrap gap-2 mt-6">
