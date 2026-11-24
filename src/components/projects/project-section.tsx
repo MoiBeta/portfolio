@@ -12,7 +12,7 @@ export function ProjectsSection() {
       <div className="max-w-6xl mx-auto">
         <SectionHeader
           title="Projects"
-          description="Freelance work for real clients, and things I build on my own to explore new tools."
+          description="Work for real clients and things I build on my own to go deeper on the full stack."
         />
 
         <div className="grid md:grid-cols-2 gap-6 mt-12">

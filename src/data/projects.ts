@@ -1,44 +1,69 @@
 export type Project = {
   title: string;
-  kind: "Freelance" | "Personal";
+  kind: string;
+  // Spans the full width of the grid
+  wide?: boolean;
   description: string;
   // TODO: what you did or the technical challenge you solved
   challenge?: string;
+  // Used instead of `challenge` when there are several points worth listing
+  highlights?: string[];
   technologies: string[];
   // Architecture shown as a left-to-right flow
   flow?: string[];
   // TODO: screenshot or GIF in /public
   image?: string;
-  // TODO: real URLs; buttons are hidden when missing
-  demoUrl?: string;
-  repoUrl?: string;
+  // The first link is the primary button
+  links?: { label: string; href: string }[];
 };
 
 export const projects: Project[] = [
   {
-    title: "Iglesia Comunidad Cristiana Cedritos",
-    kind: "Freelance",
+    title: "SelfAnvil",
+    kind: "Personal · Deployed on AWS",
+    wide: true,
     description:
-      "Website for a local church in Bogotá, built so first-time visitors can find service times, know what to expect and get directions in seconds.",
-    challenge:
-      "Set up local SEO with schema.org Church structured data (address, coordinates and weekly schedule) and added Google Maps and WhatsApp for one-tap directions and contact.",
-    technologies: ["Next.js", "Tailwind", "SEO"],
-    demoUrl: "https://www.icccedritos.com/",
-  },
-  {
-    title: "Habit Tracker",
-    kind: "Personal",
-    description:
-      "A habit tracking app with a Flutter client and its own NestJS API, containerized with Docker and deployed on AWS.",
+      "An Android app for daily tasks and habits, with subtasks and push reminders. Completing a task \"forges\" it: a flame generated in real time by a GLSL shader sweeps across the card. I built and deployed the whole system: the Flutter app, two NestJS microservices and the infrastructure that keeps them in production.",
+    highlights: [
+      "Accounts with email and Google on the same account, email verification codes and rotating refresh tokens, protected against account pre-hijacking.",
+      "Reminders at each user's local time, sent by a per-minute scheduler that handles daylight saving changes and never overlaps itself.",
+      "350+ automated tests across the app and both services, including property-based tests for the reminder scheduler.",
+      "CI/CD: GitHub Actions tests each service and deploys it through GitHub Container Registry; Codemagic ships the app to testers.",
+    ],
     technologies: [
       "Flutter",
       "Riverpod",
       "Clean Architecture",
       "NestJS",
+      "Prisma",
+      "PostgreSQL",
       "Docker",
-      "AWS",
+      "AWS Lightsail",
+      "Firebase",
+      "GitHub Actions",
     ],
-    flow: ["Flutter app", "NestJS API", "Docker", "AWS"],
+    flow: [
+      "Flutter app",
+      "Caddy (HTTPS)",
+      "auth + habit services (NestJS)",
+      "PostgreSQL (Supabase)",
+    ],
+    links: [
+      { label: "App repo", href: "https://github.com/MoiBeta/SelfAnvil" },
+      { label: "auth-service", href: "https://github.com/MoiBeta/auth-service" },
+      { label: "habit-service", href: "https://github.com/MoiBeta/habit-service" },
+      { label: "API docs", href: "https://habits.selfanvil.app/docs" },
+    ],
+  },
+  {
+    title: "Iglesia Comunidad Cristiana Cedritos",
+    kind: "Pro bono",
+    description:
+      "Website for a local church in Bogotá, built so first-time visitors can find service times, know what to expect and get directions in seconds.",
+    challenge:
+      "Set up local SEO with schema.org Church structured data (address, coordinates and weekly schedule) and added Google Maps and WhatsApp for one-tap directions and contact.",
+    technologies: ["Next.js", "Tailwind", "SEO", "Vercel"],
+    links: [{ label: "Visit site", href: "https://www.icccedritos.com/" }],
   },
   {
     title: "Game Prototype",

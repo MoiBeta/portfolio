@@ -9,6 +9,7 @@ import {
   CardContent,
 } from "@/components/ui/card";
 import type { Project } from "@/data/projects";
+import { cn } from "@/lib/utils";
 
 type ProjectCardProps = {
   project: Project;
@@ -20,17 +21,23 @@ export function ProjectCard({
   const {
     title,
     kind,
+    wide,
     description,
     challenge,
+    highlights,
     technologies,
     flow,
     image,
-    demoUrl,
-    repoUrl,
+    links,
   } = project;
 
   return (
-    <Card className="bg-zinc-950 border-zinc-800">
+    <Card
+      className={cn(
+        "bg-zinc-950 border-zinc-800",
+        wide && "md:col-span-2"
+      )}
+    >
       {image && (
         <Image
           src={image}
@@ -50,12 +57,28 @@ export function ProjectCard({
           {title}
         </h3>
 
-        <p className="mt-4 text-zinc-400 leading-relaxed">
+        <p className="mt-4 max-w-3xl text-zinc-400 leading-relaxed">
           {description}
         </p>
 
+        {highlights && (
+          <>
+            <h4 className="mt-6 text-sm font-medium text-zinc-300">
+              What I did
+            </h4>
+
+            <ul className="mt-2 max-w-3xl space-y-2 text-zinc-400 leading-relaxed list-disc pl-5 marker:text-zinc-600">
+              {highlights.map((highlight) => (
+                <li key={highlight}>
+                  {highlight}
+                </li>
+              ))}
+            </ul>
+          </>
+        )}
+
         {challenge && (
-          <p className="mt-4 text-zinc-400 leading-relaxed">
+          <p className="mt-4 max-w-3xl text-zinc-400 leading-relaxed">
             <span className="text-zinc-300 font-medium">
               What I did:{" "}
             </span>
@@ -89,23 +112,19 @@ export function ProjectCard({
           ))}
         </div>
 
-        {(demoUrl || repoUrl) && (
-          <div className="flex gap-3 mt-8">
-            {demoUrl && (
-              <Button asChild>
-                <a href={demoUrl} target="_blank" rel="noopener noreferrer">
-                  {kind === "Freelance" ? "Visit site" : "Live Demo"}
+        {links && links.length > 0 && (
+          <div className="flex flex-wrap gap-3 mt-8">
+            {links.map((link, index) => (
+              <Button
+                key={link.href}
+                variant={index === 0 ? "default" : "outline"}
+                asChild
+              >
+                <a href={link.href} target="_blank" rel="noopener noreferrer">
+                  {link.label}
                 </a>
               </Button>
-            )}
-
-            {repoUrl && (
-              <Button variant="outline" asChild>
-                <a href={repoUrl} target="_blank" rel="noopener noreferrer">
-                  GitHub
-                </a>
-              </Button>
-            )}
+            ))}
           </div>
         )}
       </CardContent>
