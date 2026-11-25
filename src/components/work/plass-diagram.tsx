@@ -79,8 +79,8 @@ export function PlassDiagram() {
       </div>
 
       <figcaption className="text-xs text-zinc-600">
-        Diagram of the passenger and driver apps. The service is no longer
-        available, so there are no public screenshots.
+        The service is no longer available, so there are no public
+        screenshots.
       </figcaption>
     </figure>
   );
