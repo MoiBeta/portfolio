@@ -10,7 +10,7 @@ export const skillGroups: SkillGroup[] = [
   },
   {
     name: "Backend",
-    skills: ["NestJS", "TypeScript", "Spring Boot", "Prisma", "REST", "Microservices"],
+    skills: ["NestJS", "TypeScript", "Prisma", "REST", "Microservices"],
   },
   {
     name: "Cloud & Data",

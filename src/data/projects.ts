@@ -58,18 +58,12 @@ export const projects: Project[] = [
   {
     title: "Iglesia Comunidad Cristiana Cedritos",
     kind: "Pro bono",
+    wide: true,
     description:
       "Website for a local church in Bogotá, built so first-time visitors can find service times, know what to expect and get directions in seconds.",
     challenge:
       "Set up local SEO with schema.org Church structured data (address, coordinates and weekly schedule) and added Google Maps and WhatsApp for one-tap directions and contact.",
     technologies: ["Next.js", "Tailwind", "SEO", "Vercel"],
     links: [{ label: "Visit site", href: "https://www.icccedritos.com/" }],
-  },
-  {
-    title: "Game Prototype",
-    kind: "Personal",
-    description:
-      "A 2D game prototype exploring Flutter beyond business apps, with Flame for the game loop and Rive for animations.",
-    technologies: ["Flutter", "Flame", "Rive"],
   },
 ];
