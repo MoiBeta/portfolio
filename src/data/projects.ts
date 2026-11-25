@@ -11,8 +11,9 @@ export type Project = {
   technologies: string[];
   // Architecture shown as a left-to-right flow
   flow?: string[];
-  // TODO: screenshot or GIF in /public
   image?: string;
+  // Short screen recording shown next to the text
+  video?: { mp4: string; webm: string; poster: string; alt: string };
   // The first link is the primary button
   links?: { label: string; href: string }[];
 };
@@ -42,6 +43,12 @@ export const projects: Project[] = [
       "Firebase",
       "GitHub Actions",
     ],
+    video: {
+      mp4: "/projects/selfanvil-demo.mp4",
+      webm: "/projects/selfanvil-demo.webm",
+      poster: "/projects/selfanvil-poster.webp",
+      alt: "SelfAnvil demo: completing tasks and subtasks triggers the forge flame animation",
+    },
     flow: [
       "Flutter app",
       "Caddy (HTTPS)",

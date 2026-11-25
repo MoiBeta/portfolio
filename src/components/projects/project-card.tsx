@@ -28,6 +28,7 @@ export function ProjectCard({
     technologies,
     flow,
     image,
+    video,
     links,
   } = project;
 
@@ -48,83 +49,108 @@ export function ProjectCard({
         />
       )}
 
-      <CardContent className="p-6">
-        <p className="text-sm text-zinc-500">
-          {kind}
-        </p>
+      <CardContent
+        className={cn(
+          "p-6",
+          video && "grid gap-10 md:grid-cols-[1fr_14rem]"
+        )}
+      >
+        <div>
+          <p className="text-sm text-zinc-500">
+            {kind}
+          </p>
 
-        <h3 className="mt-1 text-2xl font-semibold">
-          {title}
-        </h3>
+          <h3 className="mt-1 text-2xl font-semibold">
+            {title}
+          </h3>
 
-        <p className="mt-4 max-w-3xl text-zinc-400 leading-relaxed">
-          {description}
-        </p>
+          <p className="mt-4 max-w-3xl text-zinc-400 leading-relaxed">
+            {description}
+          </p>
 
-        {highlights && (
-          <>
-            <h4 className="mt-6 text-sm font-medium text-zinc-300">
-              What I did
-            </h4>
+          {highlights && (
+            <>
+              <h4 className="mt-6 text-sm font-medium text-zinc-300">
+                What I did
+              </h4>
 
-            <ul className="mt-2 max-w-3xl space-y-2 text-zinc-400 leading-relaxed list-disc pl-5 marker:text-zinc-600">
-              {highlights.map((highlight) => (
-                <li key={highlight}>
-                  {highlight}
+              <ul className="mt-2 max-w-3xl space-y-2 text-zinc-400 leading-relaxed list-disc pl-5 marker:text-zinc-600">
+                {highlights.map((highlight) => (
+                  <li key={highlight}>
+                    {highlight}
+                  </li>
+                ))}
+              </ul>
+            </>
+          )}
+
+          {challenge && (
+            <p className="mt-4 max-w-3xl text-zinc-400 leading-relaxed">
+              <span className="text-zinc-300 font-medium">
+                What I did:{" "}
+              </span>
+              {challenge}
+            </p>
+          )}
+
+          {flow && (
+            <ol
+              aria-label="Architecture"
+              className="mt-6 flex flex-wrap items-center gap-2 text-sm"
+            >
+              {flow.map((step, index) => (
+                <li key={step} className="flex items-center gap-2">
+                  {index > 0 && (
+                    <ArrowRight className="size-4 text-zinc-600" />
+                  )}
+                  <span className="rounded-md border border-zinc-800 bg-zinc-900 px-3 py-1.5 text-zinc-300">
+                    {step}
+                  </span>
                 </li>
               ))}
-            </ul>
-          </>
-        )}
+            </ol>
+          )}
 
-        {challenge && (
-          <p className="mt-4 max-w-3xl text-zinc-400 leading-relaxed">
-            <span className="text-zinc-300 font-medium">
-              What I did:{" "}
-            </span>
-            {challenge}
-          </p>
-        )}
-
-        {flow && (
-          <ol
-            aria-label="Architecture"
-            className="mt-6 flex flex-wrap items-center gap-2 text-sm"
-          >
-            {flow.map((step, index) => (
-              <li key={step} className="flex items-center gap-2">
-                {index > 0 && (
-                  <ArrowRight className="size-4 text-zinc-600" />
-                )}
-                <span className="rounded-md border border-zinc-800 bg-zinc-900 px-3 py-1.5 text-zinc-300">
-                  {step}
-                </span>
-              </li>
+          <div className="flex flex-wrap gap-2 mt-6">
+            {technologies.map((tech) => (
+              <Badge key={tech} variant="secondary">
+                {tech}
+              </Badge>
             ))}
-          </ol>
-        )}
+          </div>
 
-        <div className="flex flex-wrap gap-2 mt-6">
-          {technologies.map((tech) => (
-            <Badge key={tech} variant="secondary">
-              {tech}
-            </Badge>
-          ))}
+          {links && links.length > 0 && (
+            <div className="flex flex-wrap gap-3 mt-8">
+              {links.map((link, index) => (
+                <Button
+                  key={link.href}
+                  variant={index === 0 ? "default" : "outline"}
+                  asChild
+                >
+                  <a href={link.href} target="_blank" rel="noopener noreferrer">
+                    {link.label}
+                  </a>
+                </Button>
+              ))}
+            </div>
+          )}
         </div>
 
-        {links && links.length > 0 && (
-          <div className="flex flex-wrap gap-3 mt-8">
-            {links.map((link, index) => (
-              <Button
-                key={link.href}
-                variant={index === 0 ? "default" : "outline"}
-                asChild
-              >
-                <a href={link.href} target="_blank" rel="noopener noreferrer">
-                  {link.label}
-                </a>
-              </Button>
-            ))}
+        {video && (
+          <div className="flex justify-center md:items-center">
+            {/* Muted autoplay loop: behaves like a GIF at a fraction of the size */}
+            <video
+              autoPlay
+              muted
+              loop
+              playsInline
+              poster={video.poster}
+              aria-label={video.alt}
+              className="w-48 md:w-full h-auto rounded-2xl border border-zinc-800"
+            >
+              <source src={video.webm} type="video/webm" />
+              <source src={video.mp4} type="video/mp4" />
+            </video>
           </div>
         )}
       </CardContent>
