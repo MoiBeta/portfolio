@@ -1,4 +1,6 @@
 export type Project = {
+  // Used for the card anchor and the short link (moibeta.dev/<slug>)
+  slug: string;
   title: string;
   kind: string;
   // Spans the full width of the grid
@@ -20,6 +22,7 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    slug: "selfanvil",
     title: "SelfAnvil",
     kind: "Personal · Deployed on AWS",
     wide: true,
@@ -63,6 +66,7 @@ export const projects: Project[] = [
     ],
   },
   {
+    slug: "icccedritos",
     title: "Iglesia Comunidad Cristiana Cedritos",
     kind: "Pro bono",
     wide: true,

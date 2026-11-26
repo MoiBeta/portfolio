@@ -19,6 +19,7 @@ export function ProjectCard({
   project,
 }: ProjectCardProps) {
   const {
+    slug,
     title,
     kind,
     wide,
@@ -34,8 +35,9 @@ export function ProjectCard({
 
   return (
     <Card
+      id={`project-${slug}`}
       className={cn(
-        "bg-zinc-950 border-zinc-800",
+        "scroll-mt-20 bg-zinc-950 border-zinc-800",
         wide && "md:col-span-2"
       )}
     >

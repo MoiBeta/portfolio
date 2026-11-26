@@ -18,7 +18,7 @@ export function ProjectsSection() {
         <div className="grid md:grid-cols-2 gap-6 mt-12">
           {projects.map((project) => (
             <ProjectCard
-              key={project.title}
+              key={project.slug}
               project={project}
             />
           ))}
